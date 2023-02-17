@@ -1,7 +1,7 @@
 from django.shortcuts import render, HttpResponse
 from rest_framework.generics import ListAPIView
-from .models import Discount, GPAppointment
-from .serializer import DiscountSerializer, GPAppointmentSerializer
+from .models import Discount, GPAppointment, Bill
+from .serializer import DiscountSerializer, GPAppointmentSerializer, BillSerializer
 from rest_framework.views import APIView
 
 # Create your views here.
@@ -41,3 +41,16 @@ class DiscountListSeenAPIView(ListAPIView):
     serializer_class = DiscountSerializer
 
 
+class BillListAPIView(ListAPIView):
+    queryset = Bill.objects.all()
+    serializer_class = BillSerializer
+
+
+class BillListUnseenAPIView(ListAPIView):
+    queryset = Bill.objects.filter(seen=False)
+    serializer_class = BillSerializer
+
+
+class BillListSeenAPIView(ListAPIView):
+    queryset = Bill.objects.filter(seen=True)
+    serializer_class = BillSerializer

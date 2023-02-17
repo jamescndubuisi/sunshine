@@ -15,7 +15,9 @@ Including another URLconf
 """
 
 from django.urls import path
-from .views import home, GPListAPIView,GPListUnseenAPIView, GPListSeenAPIView, DiscountListAPIView, DiscountListUnseenAPIView, DiscountListSeenAPIView
+from .views import (home, GPListAPIView, GPListUnseenAPIView, GPListSeenAPIView,
+                    DiscountListAPIView, DiscountListUnseenAPIView, DiscountListSeenAPIView,
+                    BillListAPIView, BillListUnseenAPIView, BillListSeenAPIView)
 from rest_framework.urlpatterns import format_suffix_patterns
 
 urlpatterns = [
@@ -26,6 +28,9 @@ urlpatterns = [
     path('list-discount', DiscountListAPIView.as_view()),
     path('list-discount-seen', DiscountListSeenAPIView.as_view()),
     path('list-discount-unseen', DiscountListUnseenAPIView.as_view()),
+    path('list-bill', BillListAPIView.as_view()),
+    path('list-bill-seen', BillListSeenAPIView.as_view()),
+    path('list-bill-unseen', BillListUnseenAPIView.as_view()),
 
 ]
 urlpatterns = format_suffix_patterns(urlpatterns)
